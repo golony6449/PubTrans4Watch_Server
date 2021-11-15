@@ -23,7 +23,7 @@ func GetStationArrivalInfo(context *gin.Context) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	//defer resp.Body.Close() // 모든 처리 후 Body Close 처리
+	//defer resp.Body.Close() // TODO 모든 처리 후 Body Close 처리
 
 	data, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
