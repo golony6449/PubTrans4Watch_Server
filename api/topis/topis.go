@@ -1,6 +1,7 @@
 package PubTrans4Watch_Server
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -30,7 +31,11 @@ func GetStationArrivalInfo(context *gin.Context) {
 		log.Fatal(err)
 	}
 
+	jsonData := make(map[string]interface{})
+
+	json.Unmarshal(data, &jsonData)
+
 	context.JSON(200, gin.H{
-		"data": string(data),
+		"data": jsonData,
 	})
 }
