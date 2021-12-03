@@ -33,9 +33,17 @@ func GetStationArrivalInfo(context *gin.Context) {
 
 	jsonData := make(map[string]interface{})
 
+	// TODO: 예외처리
 	json.Unmarshal(data, &jsonData)
 
-	context.JSON(200, gin.H{
+	statusCode := 0
+	if jsonData["code"] == "INFO-000" {
+		statusCode = 200
+	} else {
+		statusCode = 500
+	}
+
+	context.JSON(statusCode, gin.H{
 		"data": jsonData,
 	})
 }
