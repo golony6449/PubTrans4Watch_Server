@@ -41,6 +41,7 @@ func GetStationArrivalInfo(context *gin.Context) {
 		statusCode = 200
 	} else {
 		statusCode = 500
+		fmt.Println("TOPIS에서 오류 응답")
 	}
 
 	context.JSON(statusCode, gin.H{
