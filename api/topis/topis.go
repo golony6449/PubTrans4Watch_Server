@@ -36,13 +36,9 @@ func GetStationArrivalInfo(context *gin.Context) {
 	// TODO: 예외처리
 	json.Unmarshal(data, &jsonData)
 
-	statusCode := 0
-	if jsonData["code"] == "INFO-000" {
-		statusCode = 200
-	} else {
-		statusCode = 500
-		fmt.Println("TOPIS에서 오류 응답")
-	}
+	statusCode := 200
+	// TODO TOPIS API 예외처리
+	// 성공/실패시 응답형태 다름
 
 	context.JSON(statusCode, gin.H{
 		"data": jsonData,
